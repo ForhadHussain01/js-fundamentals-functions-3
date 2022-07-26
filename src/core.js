@@ -4,7 +4,18 @@
 // The function must return "Phil's cake is ready!" if the remaining minutes is 0,
 // "The cake is still baking!" if there are any remaining minutes left,
 // or "You didn't set a timer!" if no value is provided to the parameter
+function timerStatus(minsRemaining){
+    if (minsRemaining === 0) {
+        console.log(minsRemaining)
+        return "Phil's cake is ready!"
+    }
 
+    if (minsRemaining > 0){
+        return "The cake is still baking!"
+    } else {
+        return "You didn't set a timer!" 
+    }
+}
 
 
 // 2. To help Phil prepare ahead of time, create a function named estimatePrepTime
@@ -15,6 +26,16 @@
 // number of ingredients provided and the prep time per ingredient.
 // If no prep time per ingredient is provided, the function should assume each ingredient
 // takes 2 minutes to prepare
+
+function estimatePrepTime (arrayofIngredients, ingredientsPrepTime){
+
+    if (ingredientsPrepTime=== undefined){
+        ingredientsPrepTime = 2
+    }
+        prepTimetotal = arrayofIngredients.length * ingredientsPrepTime
+        return prepTimetotal
+}
+
 
 
 
@@ -34,7 +55,18 @@
 // calculateQuantities(["milk", "eggs"], 3)
 // returns: { sugar: 0, eggs: 6 }
 
+function calculateQuantities(listOfIngredients, layers){
 
+    const sugarPlusEggs = { sugar : 0, eggs :0} 
+    
+    if (listOfIngredients.includes("sugar")){
+        sugarPlusEggs.sugar = 100 * layers
+    }
+    if (listOfIngredients.includes("eggs")){
+        sugarPlusEggs.eggs = 2 * layers
+    }
+    return sugarPlusEggs
+}
 
 // 4. Phil's cake is pretty small and only provides 1 portion. He wants to make a bigger one!
 // Create a function named improveRecipe that accepts two parameters:
@@ -49,6 +81,24 @@
 // improveRecipe({ eggs: 2, milk: 100, sugar: 200 }, 3)
 // returns: { eggs: 6, milk: 300, sugar: 600 }
 
+// function improveRecipe(recipe, numOfPortions){
+//     const keys = Object.keys(recipe)
+//     console.log(keys)
+
+//     keys.forEach(function multiplyKey(recipe) {
+//         recipe[recipe] *= numOfPortions
+//       })
+//       return recipe
+    
+// }
+function improveRecipe(recipe, numOfPortions) {
+    const keys = Object.keys(recipe)
+  
+    keys.forEach(function (theKey) {
+      recipe[theKey] = recipe[theKey] * numOfPortions
+    })
+    return recipe
+  }
 
 
 
